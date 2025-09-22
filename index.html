@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>구급대 희망근무 소통달력</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="icon.svg" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="title-group">
+          <h1>구급대 희망근무 소통달력</h1>
+          <p class="subtitle">마포소방서 · 날짜별 사고 및 초과근무 집계</p>
+        </div>
+        <div class="month-controls">
+          <button class="nav-button" id="prevMonth" aria-label="이전 달">◀</button>
+          <h2 id="monthLabel" class="month-label" aria-live="polite"></h2>
+          <button class="nav-button" id="nextMonth" aria-label="다음 달">▶</button>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <section class="calendar-section" aria-label="근무 달력">
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </section>
+        <aside class="details-panel" aria-label="선택한 날짜의 기록">
+          <div class="details-header">
+            <h3 id="selectedDateLabel">날짜를 선택하세요</h3>
+            <button class="primary-button" id="openModalButton" disabled>항목 추가</button>
+          </div>
+          <ul class="entry-list" id="sideEntryList" aria-live="polite"></ul>
+        </aside>
+      </main>
+    </div>
+
+    <div class="modal" id="entryModal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-overlay" data-dismiss></div>
+      <div class="modal-content" role="document">
+        <button class="modal-close" id="closeModal" aria-label="닫기">×</button>
+        <h2 class="modal-title">
+          <span id="modalDateLabel"></span> 일정 추가
+        </h2>
+        <form id="entryForm" class="entry-form">
+          <div class="form-row">
+            <label for="centerSelect">센터</label>
+            <select id="centerSelect" required>
+              <option value="">선택하세요</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="nameInput">이름</label>
+            <input id="nameInput" type="text" placeholder="이름" required />
+          </div>
+          <div class="form-row">
+            <label for="incidentTypeSelect">사고유형</label>
+            <select id="incidentTypeSelect" required>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="dutyTypeSelect">근무유형</label>
+            <select id="dutyTypeSelect" required>
+            </select>
+          </div>
+          <div class="form-row time-row" id="timeRow">
+            <label>시간</label>
+            <div class="time-inputs">
+              <input id="startTime" type="time" aria-label="시작 시간" disabled />
+              <span class="time-separator">~</span>
+              <input id="endTime" type="time" aria-label="종료 시간" disabled />
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="primary-button">저장</button>
+          </div>
+        </form>
+
+        <section class="modal-list-section" aria-live="polite">
+          <h3>등록된 항목</h3>
+          <ul id="modalEntryList" class="entry-list compact"></ul>
+        </section>
+      </div>
+    </div>
+
+    <template id="calendarCellTemplate">
+      <button class="calendar-cell" type="button">
+        <span class="date-label"></span>
+        <span class="count-label">주간 0(0) · 야간 0(0)</span>
+      </button>
+    </template>
+
+    <template id="entryListItemTemplate">
+      <li class="entry-item">
+        <div class="entry-main">
+          <span class="center-badge"></span>
+          <span class="entry-name"></span>
+          <span class="entry-meta"></span>
+        </div>
+        <div class="entry-sub">
+          <span class="entry-time"></span>
+          <button type="button" class="icon-button delete-button" aria-label="삭제">삭제</button>
+        </div>
+      </li>
+    </template>
+
+    <script type="module" src="js/script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('service-worker.js').catch(() => {
+            // 서비스워커 등록 실패 시 무시
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

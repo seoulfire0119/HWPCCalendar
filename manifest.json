@@ -1,0 +1,17 @@
+{
+  "name": "구급대 희망근무 소통달력",
+  "short_name": "희망근무달력",
+  "lang": "ko-KR",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f5f6f8",
+  "theme_color": "#d32f2f",
+  "description": "마포소방서 구급대 희망근무 및 사고 공유 캘린더",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
