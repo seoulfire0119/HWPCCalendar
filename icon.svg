@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d32f2f" />
+      <stop offset="100%" stop-color="#ff7043" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="24" fill="url(#grad)" />
+  <g fill="#fff" font-family="'Noto Sans KR', sans-serif" text-anchor="middle">
+    <text x="64" y="56" font-size="32" font-weight="700">구급</text>
+    <text x="64" y="94" font-size="28" font-weight="600">달력</text>
+  </g>
+  <path fill="#fff" d="M36 26c2.2 0 4 1.8 4 4v6h48v-6c0-2.2 1.8-4 4-4s4 1.8 4 4v6h6c4.4 0 8 3.6 8 8v58c0 4.4-3.6 8-8 8H26c-4.4 0-8-3.6-8-8V44c0-4.4 3.6-8 8-8h6v-6c0-2.2 1.8-4 4-4zm56 28H36v46h56V54z" opacity="0.2" />
+</svg>
