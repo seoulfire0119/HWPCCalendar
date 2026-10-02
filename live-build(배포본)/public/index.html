@@ -22,6 +22,15 @@
           height: 400px;
         }
       }
+
+      /* 컴퓨터(넓은 화면)에서도 모바일처럼 가운데 좁은 화면으로 보이게 */
+      @media (min-width: 600px) {
+        html, html body { background: #eef1f5; }
+        /* 앱 CSS(뒤에 로드됨)가 #root 여백을 덮어쓰므로 html body #root 로 우선순위를 높인다 */
+        html body #root { width: 100%; max-width: 480px; margin: 0 auto; min-height: 100vh; background: #fff; box-shadow: 0 0 24px rgba(0, 0, 0, .08); }
+        #root .d-lg-none { display: block !important; }
+        #root .d-none.d-lg-flex { display: none !important; }
+      }
     </style>
     <script type="module" crossorigin src="/assets/index-DTdvjWzt.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-GwggZZLk.css">
